@@ -1,6 +1,6 @@
-const signUpReducer = (state={}, action) => {
+const createApptForm = (state={}, action) => {
     switch(action.type){
-        case 'SIGN_UP':
+        case 'CREATE_APPT':
             console.log(action.data);
             return {...action.data}
         default:
@@ -8,4 +8,4 @@ const signUpReducer = (state={}, action) => {
     }
 }
 
-export default signUpReducer;
+export default createApptForm;

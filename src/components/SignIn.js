@@ -4,30 +4,43 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
+import { addUserSuccess } from '../actions/index'
 
 
 
 class SignIn extends React.Component {
-  
-  
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(e.target.email.value);
-    console.log(e.target.password.value);
-
-    //this.props.dispatch({type: 'ADD_USER', value: })
+  state = {
+    email: '',
+    password: ''
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
-
-    console.log(this.props.email);
   }
+  
+  handleSubmit = (e) => {
+    e.preventDefault()
+//   handle fetch request
     
-    
-    render() {
+     const reqObj = {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify(this.state)
+     }
+     
+    fetch('http://localhost:3000/user', reqObj)
+     .then(resp => resp.json())
+     .then(respData  => {
+       this.props.addUserSuccess(respData)
+       //console.log(respData)
+     })
+  }
+
+  render() {
         return (
           <h1>Sign in</h1>,
           <Card className="text-center" style={{ width: '18rem' }}>
@@ -44,7 +57,7 @@ class SignIn extends React.Component {
 
   <Form.Group controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
-    <Form.Control type="password" name="password" placeholder="Password" />
+    <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange}/>
   </Form.Group>
   <Form.Group controlId="formBasicCheckbox">
     <Form.Check type="checkbox" label="Check me out" />
@@ -60,8 +73,8 @@ class SignIn extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapDispatchToProps = {
+    addUserSuccess
+}
 
-})
-
-export default connect(mapStateToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);
