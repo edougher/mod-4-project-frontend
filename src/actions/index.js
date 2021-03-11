@@ -11,3 +11,10 @@ export const createAppointment = (data) => {
         data: data
     }
 }
+
+export const getMyAppts = (data) => {
+    return {
+        type: 'MY_APPTS',
+        data: data
+    }
+}

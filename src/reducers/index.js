@@ -3,7 +3,7 @@ import signUpReducer from './signup';
 import createApptForm from './apptForm';
 
 const mainReducer = combineReducers({
-        signup: signUpReducer,
+        currentUser: signUpReducer,
         createApptForm: createApptForm
 
 })

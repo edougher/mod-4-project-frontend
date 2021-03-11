@@ -10,8 +10,8 @@ import { addUserSuccess } from '../actions/index'
 
 class SignIn extends React.Component {
   state = {
-    email: '',
-    password: ''
+    email: 'e@d.com',
+    password: '123'
   }
 
   handleChange = event => {
@@ -49,7 +49,7 @@ class SignIn extends React.Component {
           <Card.Body>
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" name="email" placeholder="Enter email" onChange={this.handleChange}/>
+    <Form.Control type="email" name="email" placeholder="Enter email" value={this.state.email}onChange={this.handleChange}/>
     <Form.Text className="text-muted">
       We'll never share your email with anyone else.
     </Form.Text>
@@ -57,7 +57,7 @@ class SignIn extends React.Component {
 
   <Form.Group controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
-    <Form.Control type="password" name="password" placeholder="Password" onChange={this.handleChange}/>
+    <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange}/>
   </Form.Group>
   <Form.Group controlId="formBasicCheckbox">
     <Form.Check type="checkbox" label="Check me out" />
