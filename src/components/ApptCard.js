@@ -13,6 +13,10 @@ const ApptCard = (props) => {
         <span className='date'>Created at: {props.appt.created_at}</span>
       </Card.Meta>
       <Card.Description>{props.appt.location}</Card.Description>
+      <Card.Description>{props.appt.height}</Card.Description>
+      <Card.Description>{props.appt.width}</Card.Description>
+      <Card.Description>{props.appt.colors}</Card.Description>
+      <Card.Description>{props.appt.note}</Card.Description>
     </Card.Content>
     <Card.Content extra>
       

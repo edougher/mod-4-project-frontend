@@ -14,7 +14,7 @@ class RequestForm extends Component {
       width: '',
       height: '',
       colors: '',
-      comments: '',
+      note: '',
       status: "pending"
    }
   }
@@ -45,6 +45,7 @@ class RequestForm extends Component {
        fetch(`http://localhost:3000/appointments/${id}`, reqObj)
         .then(resp => resp.json())
         .then(respData => {
+          console.log(respData);
           this.props.newApptAdded(respData)
        })
     }
@@ -56,7 +57,7 @@ class RequestForm extends Component {
         width: width,
         height: height,
         colors: colors,
-        comments: note,
+        note: note,
         status: "pending"
       })
     }
@@ -96,7 +97,7 @@ class RequestForm extends Component {
               </Form.Control>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label>Additional Comments</Form.Label>
-              <Form.Control onChange={this.handleChange} value={note} as="textarea" name="comments" rows={3} />
+              <Form.Control onChange={this.handleChange} value={note} as="textarea" name="note" rows={3} />
             </Form.Group>
             </Card.Body>
             <Button onClick={this.handleEditForm} variant="primary" type="submit">

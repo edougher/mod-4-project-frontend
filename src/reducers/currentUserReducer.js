@@ -8,6 +8,11 @@ const currentUserReducer = (state={}, action) => {
             //debugger
             return currentUser = {...state, appointments: action.data}
         case 'EDIT_APPT_SUCCESS':
+            const objIndex = state.appointments.findIndex(obj => obj.id === action.data.id)
+            state.appointments[objIndex] = action.data
+            currentUser = {...state}
+            //currentUser.appointments
+            debugger
             return currentUser
         default:
             return state

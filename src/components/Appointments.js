@@ -16,7 +16,7 @@ class Appointments extends React.Component {
    }
 
    handleEdit = (e, appt) => {
-    //<RequestForm appt={appt} />
+    
     this.props.history.push('/requestForm', appt)
   }
 
@@ -44,7 +44,6 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  debugger
     return {
       currentUser_Id: state.currentUser.id,
       myAppts: state.currentUser.appointments,
