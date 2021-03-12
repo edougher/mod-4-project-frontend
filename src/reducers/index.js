@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux';
-import signUpReducer from './signup';
-import createApptForm from './apptForm';
+import currentUserReducer from './currentUserReducer';
 
 const mainReducer = combineReducers({
-        currentUser: signUpReducer,
-        createApptForm: createApptForm
-
+        currentUser: currentUserReducer
 })
 
 export default mainReducer;

@@ -2,7 +2,7 @@ import React from 'react';
 import ApptCard from './ApptCard'
 import { getMyAppts } from '../actions/index'
 import { connect } from 'react-redux';
-//import RequestForm from './RequestForm';
+//import RequestForm from './RequestForm'
 //import { Container } from 'semantic-ui-react'
 
 class Appointments extends React.Component {
@@ -16,8 +16,9 @@ class Appointments extends React.Component {
    }
 
    handleEdit = (e, appt) => {
-    //let button = !this.btnState.buttonPressed
-}
+    //<RequestForm appt={appt} />
+    this.props.history.push('/requestForm', appt)
+  }
 
   renderAppts = () => {
    return this.props.myAppts.map(appt => (
@@ -43,6 +44,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
+  debugger
     return {
       currentUser_Id: state.currentUser.id,
       myAppts: state.currentUser.appointments,

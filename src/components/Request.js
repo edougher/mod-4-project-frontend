@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux';
-import RequestForm from './RequestForm'
-//import { createAppointment } from '../actions/index'
+import { createNewAppointment } from '../actions/index'
+
 
 
 
@@ -42,21 +42,14 @@ class Request extends React.Component {
    fetch('http://localhost:3000/appointment', reqObj)
     .then(resp => resp.json())
     .then(respData  => {
-      //this.props.addUserSuccess(respData)
       console.log(respData)
+      this.props.createNewAppointment(respData)
     })
- }
-
- renderForm = () => {
-   <RequestForm />
- }
- componentDidMount(){
-  console.log(this.props.location.state.detail);
  }
 
   render() {
     //const { location, width, height, colors, comments} = this.history.state.state
-    console.log(this.props.location.state.detail);
+    //console.log(this.props.location.state.detail);
         return (<div>
           <h1>Request Appointment</h1>
           <Card className="text-center" >
@@ -101,15 +94,15 @@ class Request extends React.Component {
     }
 }
 
-//const mapDispatchToProps = {
-//    addUserSuccess
-//}
+const mapDispatchToProps = {
+    createNewAppointment
+}
 
 const mapStateToProps = (state) => {
   return {
     currentUser_Id: state.currentUser.id
-  }
+    }
 }
 
 
-export default connect(mapStateToProps)(Request);
+export default connect(mapStateToProps, mapDispatchToProps)(Request);

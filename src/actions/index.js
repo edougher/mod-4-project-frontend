@@ -5,9 +5,9 @@ export const addUserSuccess = (data) => {
     }
 }
 
-export const createAppointment = (data) => {
+export const createNewAppointment = (data) => {
     return {
-        type: 'CREATE_APPT',
+        type: 'NEW_APPT_CREATED',
         data: data
     }
 }
@@ -15,6 +15,13 @@ export const createAppointment = (data) => {
 export const getMyAppts = (data) => {
     return {
         type: 'MY_APPTS',
+        data: data
+    }
+}
+
+export const newApptAdded = (data) => {
+    return {
+        type: 'EDIT_APPT_SUCCESS',
         data: data
     }
 }

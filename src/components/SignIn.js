@@ -22,7 +22,6 @@ class SignIn extends React.Component {
   
   handleSubmit = (e) => {
     e.preventDefault()
-//   handle fetch request
     
      const reqObj = {
        method: 'POST',
@@ -36,7 +35,6 @@ class SignIn extends React.Component {
      .then(resp => resp.json())
      .then(respData  => {
        this.props.addUserSuccess(respData)
-       //console.log(respData)
      })
   }
 
