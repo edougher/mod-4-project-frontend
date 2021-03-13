@@ -23,13 +23,12 @@ class Appointments extends React.Component {
   renderAppts = () => {
    return this.props.myAppts.map(appt => (
      <ApptCard edit={this.handleEdit} key={appt.id} appt={appt} name={this.props.userName} />
-       
-   ));
+    ));
  }
  
 
     render() {
-        console.log(this.props.myAppts);
+        //console.log(this.props.myAppts);
         return (
             <div>APPTS
             {this.renderAppts()}

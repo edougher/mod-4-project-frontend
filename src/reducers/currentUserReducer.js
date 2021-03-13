@@ -5,8 +5,11 @@ const currentUserReducer = (state={}, action) => {
             currentUser = action.data
             return currentUser
         case 'NEW_APPT_CREATED':
-            //debugger
-            return currentUser = {...state, appointments: action.data}
+            let newAppts = state.appointments.push(action.data) 
+            //return Object.assign({}, state, { appointments: action.data})
+            currentUser = {...state, appointments: newAppts}
+            debugger 
+            return currentUser
         case 'EDIT_APPT_SUCCESS':
             const objIndex = state.appointments.findIndex(obj => obj.id === action.data.id)
             state.appointments[objIndex] = action.data

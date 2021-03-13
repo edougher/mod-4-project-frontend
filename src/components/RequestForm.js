@@ -106,6 +106,9 @@ class RequestForm extends Component {
             <Button variant="primary" type="submit">
               Cancel
             </Button>
+            <Button variant="primary">
+              Cancel
+            </Button>
            </Form>
         </Card>
             </div>

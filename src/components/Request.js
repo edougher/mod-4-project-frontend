@@ -30,7 +30,6 @@ class Request extends React.Component {
  
  handleSubmit = (e) => {
    e.preventDefault()
-   console.log(this.state);
     const reqObj = {
       method: 'POST',
       headers: {
