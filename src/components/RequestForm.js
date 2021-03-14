@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { newApptAdded } from '../actions/index'
+import { deleteAppt } from '../actions/index'
 import { connect } from 'react-redux'
 
 class RequestForm extends Component {
@@ -13,7 +14,7 @@ class RequestForm extends Component {
       location: '',
       width: '',
       height: '',
-      colors: '',
+      colors: 0,
       note: '',
       status: "pending"
    }
@@ -31,6 +32,7 @@ class RequestForm extends Component {
 
   
     handleEditForm = (e) => {
+      debugger
     e.preventDefault()
     const { id } = this.props.history.location.state
 
@@ -47,6 +49,7 @@ class RequestForm extends Component {
         .then(respData => {
           console.log(respData);
           this.props.newApptAdded(respData)
+          this.history.push('/appointments')
        })
     }
     componentDidMount(){
@@ -59,6 +62,17 @@ class RequestForm extends Component {
         colors: colors,
         note: note,
         status: "pending"
+      })
+    }
+
+    handleDelete = () => {
+      const { id } = this.props.history.location.state
+     fetch(`http://localhost:3000/appointments/${id}`, {method: 'DELETE'})
+       .then(resp => resp.json())
+       .then(respData => {
+        console.log(respData)
+         this.props.deleteAppt(respData.appt_id)
+         this.history.push('/appointments')
       })
     }
 
@@ -106,8 +120,8 @@ class RequestForm extends Component {
             <Button variant="primary" type="submit">
               Cancel
             </Button>
-            <Button variant="primary">
-              Cancel
+            <Button onClick={this.handleDelete}variant="primary">
+              Delete
             </Button>
            </Form>
         </Card>
@@ -117,7 +131,8 @@ class RequestForm extends Component {
 }
 
 const mapDispatchToProps = {
-    newApptAdded
+    newApptAdded,
+    deleteAppt
 }
 
 export default connect(null, mapDispatchToProps )(RequestForm);

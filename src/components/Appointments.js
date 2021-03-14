@@ -10,7 +10,6 @@ class Appointments extends React.Component {
        fetch(`http://localhost:3000/appointments/${this.props.currentUser_Id}`)
         .then(resp => resp.json())
         .then(respData  => {
-          console.log(respData)
             this.props.getMyAppts(respData)
        })
    }

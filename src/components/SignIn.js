@@ -35,6 +35,7 @@ class SignIn extends React.Component {
      .then(resp => resp.json())
      .then(respData  => {
        this.props.addUserSuccess(respData)
+       this.history.push('/appointments')
      })
   }
 

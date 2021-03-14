@@ -25,3 +25,10 @@ export const newApptAdded = (data) => {
         data: data
     }
 }
+
+export const deleteAppt = (data) => {
+    return {
+        type: 'DELETE_APPT_SUCCESS',
+        data: data
+    }
+}

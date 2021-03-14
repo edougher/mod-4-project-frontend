@@ -14,7 +14,7 @@ class Request extends React.Component {
    location: '',
    width: '',
    height: '',
-   colors: '',
+   colors: 1,
    comments: '',
    user_id: this.props.currentUser_Id,
    status: "pending"
@@ -22,8 +22,7 @@ class Request extends React.Component {
 
  handleChange = event => {
     console.log(`${event.target.name}: ${event.target.value}`);
-
-   this.setState({
+    this.setState({
      [event.target.name]: event.target.value
    })
  }
@@ -43,8 +42,10 @@ class Request extends React.Component {
     .then(respData  => {
       console.log(respData)
       this.props.createNewAppointment(respData)
+
     })
  }
+
 
   render() {
     //const { location, width, height, colors, comments} = this.history.state.state
@@ -71,7 +72,7 @@ class Request extends React.Component {
               <Form.Control type="text" name="height" placeholder="Height" onChange={this.handleChange}/>
             </Form.Group>
             <Form.Label>Number of Colors</Form.Label>
-              <Form.Control as="select" name="colors" custom>
+              <Form.Control onChange={this.handleChange} as="select" name="colors" custom>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -98,8 +99,9 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
+  debugger
   return {
-    currentUser_Id: state.currentUser.id
+    currentUser_Id: state.currentUser.currentUser.id
     }
 }
 
